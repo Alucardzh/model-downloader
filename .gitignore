@@ -1,0 +1,13 @@
+.env
+downloads/
+__pycache__/
+*.pyc
+.python-version
+.superpowers/
+*.egg-info/
+.venv/
+.claude/
+.ruff_cache/
+*.db
+*.db-shm
+*.db-wal

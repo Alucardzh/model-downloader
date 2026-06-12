@@ -1,0 +1,11 @@
+services:
+  model-download:
+    build: .
+    image: model_download:latest
+    container_name: model-download
+    ports:
+      - "12000:8000"
+    volumes:
+      - ./downloads:/app/downloads
+      - ./.env:/app/.env:ro
+    restart: unless-stopped

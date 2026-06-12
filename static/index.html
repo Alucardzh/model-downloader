@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Downloader</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 顶栏 -->
+    <header class="top-bar">
+        <h1 class="logo">📦 Model Downloader</h1>
+        <div id="configStatus" class="config-status"></div>
+    </header>
+
+    <!-- 新建任务表单 -->
+    <section class="new-task">
+        <h2>＋ 新建下载任务</h2>
+        <form id="taskForm">
+            <div class="form-row">
+                <input type="text" id="repoId" placeholder="仓库地址（必填）如: ZhipuAI/glm-4" required>
+                <input type="text" id="filename" placeholder="文件名（选填）">
+            </div>
+            <div class="form-row controls">
+                <div class="control-group">
+                    <label>平台:</label>
+                    <select id="platform">
+                        <option value="modelscope">ModelScope（默认）</option>
+                        <option value="huggingface">HuggingFace</option>
+                    </select>
+                </div>
+                <div class="control-group" id="hfOptions" style="display:none">
+                    <label>网络:</label>
+                    <select id="hfMode">
+                        <option value="mirror">镜像</option>
+                        <option value="proxy">代理</option>
+                        <option value="none">直连</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">开始下载</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- 任务列表 -->
+    <section class="task-list">
+        <div class="list-header">
+            <h2>下载任务</h2>
+            <div class="list-actions">
+                <div class="tabs">
+                    <button class="tab active" data-status="all">全部</button>
+                    <button class="tab" data-status="running">下载中</button>
+                    <button class="tab" data-status="completed">已完成</button>
+                    <button class="tab" data-status="failed">失败</button>
+                </div>
+                <button id="btnCleanup" class="btn btn-danger btn-sm">清理记录</button>
+            </div>
+        </div>
+        <div id="taskContainer"></div>
+        <div id="emptyState" class="empty-state" style="display:none;">暂无任务</div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
